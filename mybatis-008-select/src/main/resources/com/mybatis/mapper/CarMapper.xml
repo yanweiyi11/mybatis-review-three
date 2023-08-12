@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mybatis.mapper.CarMapper">
+    <!--默认情况下,二级缓存机制是开启的,只需要在对应的sqlMapper.xml文件中添加以下标签,用来表示使用该二级缓存-->
+    <cache/>
+    <select id="selectById2" resultType="car">
+        select *
+        from t_car
+        where id = #{id};
+    </select>
+    <insert id="insertClazz">
+        insert into t_clazz (cid, cname)
+        values (#{cid}, #{cname});
+    </insert>
+    <select id="selectById" resultType="car">
+        select *
+        from t_car
+        where id = #{id};
+    </select>
+
+    <!--<select id="selectTotal" resultType="_long">
+        select count(*)
+        from t_car;
+    </select>
+
+    <resultMap id="carResultMap" type="car">
+        <id property="id" column="id"/>
+        <result property="carNum" column="car_num"/>
+        &lt;!&ndash;如果属性名和字段名是一样的，可以省略&ndash;&gt;
+        <result property="brand" column="brand"/>
+        <result property="guidePrice" column="guide_price"/>
+        <result property="produceTime" column="produce_time"/>
+        <result property="carType" column="car_type"/>
+    </resultMap>
+
+    <select id="selectAllByTF" resultType="car">
+        select *
+        from t_car;
+    </select>
+
+    <select id="selectAllByRltMap" resultMap="carResultMap">
+        select *
+        from t_car;
+    </select>
+    <select id="selectAllRetMap" resultType="Map">
+        select *
+        from t_car;
+    </select>
+    <select id="selectAllReturnListMap" resultType="map">
+        select *
+        from t_car;
+    </select>
+    <select id="selectByIdReturnMap" resultType="map">
+        select *
+        from t_car
+        where id = #{id};
+    </select>
+
+    <sql id="carColumnNameSql">
+        id,
+        car_num      as carNum,
+        brand,
+        guide_price  as guidePrice,
+        produce_time as produceTime,
+        car_type     as carType
+    </sql>
+    <select id="selectById2" resultType="car">
+        select <include refid="carColumnNameSql"/>
+        from t_car
+        where id = #{id};
+    </select>
+    <select id="selectByBrandLike" resultType="car">
+        select <include refid="carColumnNameSql"/>
+        from t_car
+        where brand like '%${brand}%';
+    </select>
+    <select id="selectAll" resultType="car">
+        select <include refid="carColumnNameSql"/>
+        from t_car;
+    </select>
+    <select id="selectById" resultType="car">
+        select <include refid="carColumnNameSql"/>
+        from t_car
+        where id = #{id};
+    </select>-->
+
+</mapper>
